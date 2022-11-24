@@ -1,0 +1,12 @@
+require("frank.plugins-setup") --shold always on the top
+require("frank.core.options")
+require("frank.core.keymaps")
+require("frank.core.colorscheme")
+require("frank.plugins.comment")
+require("frank.plugins.nvim-tree")
+require("frank.plugins.lualine")
+require("frank.plugins.telescope")
+require("frank.plugins.nvim-cmp")
+require("frank.plugins.lsp.mason")
+require("frank.plugins.lsp.lspsaga")
+require("frank.plugins.lsp.lspconfig")
