@@ -94,12 +94,17 @@ lspconfig["emmet_ls"].setup({
 
 --config python language server
 
+local sh = require("sh")
+local sh_which = sh.command('which')
 lspconfig["pyright"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
   settings={
       python = {
-      pythonPath="/usr/bin/python3"
+      pythonPath=sh_which("python3"),
+      analysis = {
+          typeCheckingMode = "off",
+        }
       },
       pyright = {}
   }
