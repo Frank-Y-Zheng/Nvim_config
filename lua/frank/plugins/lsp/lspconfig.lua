@@ -16,7 +16,13 @@ if not typescript_setup then
   return
 end
 
+local pypath_sh = io.popen("which python3")
+local pypath = pypath_sh:read("*a") --stange but it require it to run
+
 local keymap = vim.keymap -- for conciseness
+-- local sh = require("sh")
+-- local sh_which = sh.command('which')
+
 
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
@@ -94,14 +100,12 @@ lspconfig["emmet_ls"].setup({
 
 --config python language server
 
-local sh = require("sh")
-local sh_which = sh.command('which')
 lspconfig["pyright"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
   settings={
       python = {
-      pythonPath=sh_which("python3"),
+      pythonPath=pypath_sh:read("*a"),
       analysis = {
           typeCheckingMode = "off",
         }
